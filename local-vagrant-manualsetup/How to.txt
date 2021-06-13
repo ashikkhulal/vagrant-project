@@ -1,0 +1,51 @@
+Tools:
+
+chocolatey
+vagrant version: 2.2.10
+virtualbox version: 6.1.16
+gitbash
+vscode
+
+In windows, commands and steps: (run powershell as an administrator)
+1. Installing chocolatey:
+    Follow the link: https://chocolatey.org/install
+2. Installing virtualbox (version: 6.1.16):
+    > choco install virtualbox --version=6.1.16
+3. Installing vagrant (version: 2.2.10):
+    > choco install vagrant --version=2.2.10
+4. Installing git:
+   > choco install git
+5. Installing visualstudio code:
+    Follow the link: https://code.visualstudio.com/download
+
+Installing and configuring nginx server:
+
+1. Create your project folder then open VScode as an administrator and open folder in VScode
+2. In Terminal tab, open new terminal and switch to git bash (if not default). (you can kill the other terminal if you want)
+3. Provisioning nginx server (makesure you are in same pwd as Vagrantfile):
+   $ vagrant up
+   Hint: you can open virtual box and see the server coming up
+4. SSH into nginx:
+    $ vagrant ssh web01
+5. Update and upgrade packages:
+    $ sudo apt update -y
+    $ sudo apt upgrade -y 
+6. Switch as root user:
+    $ sudo -i 
+7. Install nginx:
+    $ apt install nginx -y 
+8. Git clone:
+    $ git clone https://github.com/ashikkhulal/my-site.git
+    (you can use your own site if you want)
+10. copy the files into nginx html folder:
+    $ cp -R my-site/* /usr/share/nginx/html/
+11. Edit the default path for nginx site
+    $ vim /etc/nginx/sites-enabled/default 
+    and change the root location to /usr/share/nginx/html instead of /var/www/example.com 
+12. Start nginx:
+    $ systemctl start nginx
+13. Verify and validate:
+    copy and paste "192.168.33.11" in your web browser
+    or you can do ifconfig and copy the ip address if you made changes in vagrantfile 
+14. Destroy:
+    exit out of web01 and then pass in "$ vagrant destroy" to clean up 
