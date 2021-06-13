@@ -1,0 +1,1 @@
+This repo contains a local setup for the project using Virtualbox, Vagrant and Nginx.
